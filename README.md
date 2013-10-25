@@ -25,8 +25,8 @@ Modify these steps to taste (examples given running on the Amazon AMI 2013.03):
 # git clone git@github.com:randywallace/zabbix-cloudwatch.git /usr/local/zabbix-cloudwatch
 # cd /usr/local/zabbix-cloudwatch
 # chown zabbix:zabbix get_aws_cloudwatch_metric.rb
-# gem install bundler
 # yum install ruby ruby-devel rubygems gcc libxml2-devel libxslt-devel
+# gem install bundler
 # bundle install
 # ln -s /usr/local/zabbix-cloudwatch/get_aws_cloudwatch_metric.rb /var/lib/zabbixsrv/externalscripts/get_aws_cloudwatch_metric.rb
 ```

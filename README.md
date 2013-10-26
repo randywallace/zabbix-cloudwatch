@@ -78,7 +78,7 @@ ls $(gem env gemdir)/gems/zabbix-cloudwatch-$(zabbix-cloudwatch --version)/bin/z
 And place it in your externalscripts path like this (your zabbix path/user/group may be different):
 
 ```bash
-cp -n $(gem env gemdir)/gems/zabbix-cloudwatch-$(zabbix-cloudwatch --version)/bin/zabbix-cloudwatch \
+cp $(gem env gemdir)/gems/zabbix-cloudwatch-$(zabbix-cloudwatch --version)/bin/zabbix-cloudwatch \
       /var/lib/zabbixsrv/externalscripts/
 chown zabbix:zabbix /var/lib/zabbixsrv/externalscripts/zabbix-cloudwatch
 ```

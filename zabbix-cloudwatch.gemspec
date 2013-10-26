@@ -6,11 +6,16 @@ Gem::Specification.new do |s|
   s.name        = "zabbix-cloudwatch"
   s.version     = ZabbixCloudwatch::VERSION
   s.platform    = Gem::Platform::RUBY
+  s.license     = "MIT"
   s.authors     = ["Randy D. Wallace Jr."]
   s.email       = ["randy@randywallace.com"]
   s.homepage    = "http://github.com/randywallace/zabbix-cloudwatch"
   s.summary     = %q{A library for getting cloudwatch metrics into Zabbix}
-  s.description = %q{A library for getting cloudwatch metrics into Zabbix}
+  s.description = <<EOF
+A library for getting cloudwatch metrics into Zabbix
+
+Please see http://github.com/randywallace/zabbix-cloudwatch for more details
+EOF
 
   s.add_runtime_dependency "aws-sdk", "~> 1.21.0"
   s.add_runtime_dependency "getopt", "~> 1.4.1"

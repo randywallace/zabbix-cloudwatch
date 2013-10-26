@@ -1,9 +1,13 @@
 #!/usr/bin/env ruby
 
-require 'rubygems'
-require 'bundler/setup'
-require 'getopt/long'
-require 'zabbix-cloudwatch'
+begin
+  require 'zabbix-cloudwatch'
+  require 'getopt/long'
+rescue
+  require 'rubygems'
+  require 'zabbix-cloudwatch'
+  require 'getopt/long'
+end
 
 @@aws_access_key=''
 @@aws_secret_key=''

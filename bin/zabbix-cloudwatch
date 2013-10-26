@@ -28,7 +28,8 @@ opts = Getopt::Long.getopts(
    ["--statistic",Getopt::REQUIRED],
    ["--aws-access-key", Getopt::REQUIRED],
    ["--aws-secret-key", Getopt::REQUIRED],
-   ["--aws-region", Getopt::REQUIRED]
+   ["--aws-region", Getopt::REQUIRED],
+   ["--version"]
 )
 
 
@@ -53,6 +54,11 @@ end
 
 if opts.key?"help" or opts.empty?
   usage
+  exit 0
+end
+
+if opts.key?"version"
+  puts ZabbixCloudwatch::VERSION
   exit 0
 end
 

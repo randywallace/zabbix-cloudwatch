@@ -66,8 +66,14 @@ export AWS_REGION="YOUR AWS REGION"
 
 ### 2. Within the binary in the gem.  
 
-Find it with `which zabbix-cloudwatch`.  If you intend to do it this way, I suggest you make a copy of the binary
+If you intend to do it this way, I suggest you make a copy of the binary
 and place it in your zabbix externalscript path (instead of the suggested symlink in the installation example).
+
+Find the binary like this:
+
+```
+ls $(gem env gemdir)/gems/zabbix-cloudwatch-$(zabbix-cloudwatch --version)/bin/zabbix-cloudwatch
+```
 
 The class variables for this are at the very top of the file for your convenience.
 

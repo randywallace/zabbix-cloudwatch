@@ -73,6 +73,8 @@ The class variables for this are at the very top of the file for your convenienc
 
 ### 3. Passing in your AWS Keys when you run zabbix-cloudwatch using the command line flags.
 
+## Order of preference
+
 The order of preference that this gem uses for the region and keys (individually) are:
 
 * Commandline flag

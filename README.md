@@ -15,7 +15,7 @@ Usage: zabbix-cloudwatch
   -s, --statistic         Minimum|Maximum|Average|Sum|SampleCount   Default: Average
   --aws-access-key        AWS Access Key
   --aws-secret-key        AWS Secret Key
-  --aws-region            AWS Region (us-east-1)                    Default: us-east-1
+  --aws-region            AWS Region                                Default: us-east-1
 ```
 
 ## Getting it running
@@ -24,15 +24,15 @@ Usage: zabbix-cloudwatch
 * for some of the gem dependencies, you will need the ruby development packages, gcc, libxml2, and libxslt
 
 Modify these steps to taste (examples given running on the Amazon AMI 2013.03):
-```
-# yum install ruby ruby-devel rubygems gcc libxml2-devel libxslt-devel
-# gem install bundler zabbix-cloudwatch
-# ln -s $(which zabbix-cloudwatch) /var/lib/zabbixsrv/externalscripts/zabbix-cloudwatch
+```bash
+yum install ruby ruby-devel rubygems gcc libxml2-devel libxslt-devel
+gem install bundler zabbix-cloudwatch
+ln -s $(which zabbix-cloudwatch) /var/lib/zabbixsrv/externalscripts/zabbix-cloudwatch
 ```
 
 ## Examples
 
-```
+```bash
 zabbix-cloudwatch -n AWS/EC2 \
                   -m CPUUtilization \
                   -d AutoScalingGroupName \
@@ -58,7 +58,7 @@ There are (3) ways to get your AWS Credentials into `zabbix-cloudwatch`.
 permissions.**
 
 ### 1. Environment Variables (which is difficult with Zabbix):
-```
+```bash
 export AWS_ACCESS_KEY_ID="YOUR ACCESS KEY" 
 export AWS_SECRET_ACCESS_KEY="YOUR SECRET ACCESS KEY"
 export AWS_REGION="YOUR AWS REGION"
@@ -71,14 +71,31 @@ and place it in your zabbix externalscript path (instead of the suggested symlin
 
 Find the binary like this:
 
-```
+```bash
 ls $(gem env gemdir)/gems/zabbix-cloudwatch-$(zabbix-cloudwatch --version)/bin/zabbix-cloudwatch
+```
+
+And place it in your externalscripts path like this (your zabbix path/user/group may be different):
+
+```bash
+cp -n $(gem env gemdir)/gems/zabbix-cloudwatch-$(zabbix-cloudwatch --version)/bin/zabbix-cloudwatch \
+      /var/lib/zabbixsrv/externalscripts/
+chown zabbix:zabbix /var/lib/zabbixsrv/externalscripts/zabbix-cloudwatch
 ```
 
 The class variables for this are at the very top of the file for your convenience.
 
 ### 3. Passing in your AWS Keys when you run zabbix-cloudwatch using the command line flags.
 
+```bash
+zabbix-cloudwatch -n AWS/AutoScaling \
+                  -m GroupInServiceInstances \
+                  -d AutoScalingGroupName \
+                  -v your-auto-scaling-group \
+                  --aws-access-key 'YOUR ACCESS KEY' \
+                  --aws-secret-key 'YOUR SECRET KEY' \
+                  --aws-region 'YOUR AWS REGION'
+```
 ## Order of preference
 
 The order of preference that this gem uses for the region and keys (individually) are:

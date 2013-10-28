@@ -14,7 +14,7 @@ module ZabbixCloudwatch
   
     attr_accessor :options, :aws, :start_time, :end_time, :period, :statistic
   
-    def initialize options
+    def initialize options = {}
       self.options = options
       usage if options.key?"help"
       raise NamespaceArgumentMissingException unless options.key?"namespace"
@@ -22,9 +22,6 @@ module ZabbixCloudwatch
       raise DimensionArgumentMissingException unless options.key?"dimension-name"
       raise DimensionArgumentMissingException unless options.key?"dimension-value"
       self.aws = AWS::CloudWatch.new(get_aws_options).client
-      test_aws_connectivity
-      set_time_range
-      set_statistic
     end
 
     def get_aws_options
@@ -35,7 +32,6 @@ module ZabbixCloudwatch
       else
         region = 'us-east-1'
       end
-      puts options.inspect
       {:access_key_id => options["aws-access-key"], :secret_access_key => options["aws-secret-key"], :region => region}
     end
   
@@ -87,6 +83,9 @@ module ZabbixCloudwatch
     end
   
     def run!
+      test_aws_connectivity
+      set_time_range
+      set_statistic
       ret = aws.get_metric_statistics({
               :namespace => options["namespace"],
               :metric_name => options["metricname"],

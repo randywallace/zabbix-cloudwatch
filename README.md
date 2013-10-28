@@ -1,6 +1,8 @@
 # zabbix-cloudwatch
 
 [![Gem Version](https://badge.fury.io/rb/zabbix-cloudwatch.png)](http://badge.fury.io/rb/zabbix-cloudwatch)
+[![Code Climate](https://codeclimate.com/github/randywallace/zabbix-cloudwatch.png)](https://codeclimate.com/github/randywallace/zabbix-cloudwatch)
+[![Dependency Status](https://gemnasium.com/randywallace/zabbix-cloudwatch.png)](https://gemnasium.com/randywallace/zabbix-cloudwatch)
 
 An external script for getting cloudwatch metrics into Zabbix
 

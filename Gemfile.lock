@@ -1,20 +1,20 @@
 PATH
   remote: .
   specs:
-    zabbix-cloudwatch (0.0.5)
-      aws-sdk (~> 1.21.0)
+    zabbix-cloudwatch (0.0.6)
+      aws-sdk (~> 1.23.0)
       getopt (~> 1.4.1)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    aws-sdk (1.21.0)
+    aws-sdk (1.23.0)
       json (~> 1.4)
       nokogiri (>= 1.4.4, < 1.6.0)
       uuidtools (~> 2.1)
     diff-lcs (1.2.4)
     getopt (1.4.1)
-    json (1.8.0)
+    json (1.8.1)
     nokogiri (1.5.10)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)

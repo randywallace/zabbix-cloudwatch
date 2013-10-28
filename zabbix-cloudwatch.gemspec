@@ -17,7 +17,7 @@ A library for getting cloudwatch metrics into Zabbix
 Please see http://github.com/randywallace/zabbix-cloudwatch for more details
 EOF
 
-  s.add_runtime_dependency "aws-sdk", "~> 1.21.0"
+  s.add_runtime_dependency "aws-sdk", "~> 1.23.0"
   s.add_runtime_dependency "getopt", "~> 1.4.1"
   s.add_development_dependency "rspec"
 

@@ -1,5 +1,6 @@
 # zabbix-cloudwatch
 
+[![Gem Version](https://badge.fury.io/rb/zabbix-cloudwatch.png)](http://badge.fury.io/rb/zabbix-cloudwatch)
 
 An external script for getting cloudwatch metrics into Zabbix
 

@@ -16,6 +16,7 @@ GEM
     getopt (1.4.1)
     json (1.8.1)
     nokogiri (1.5.10)
+    rake (10.1.0)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
@@ -30,5 +31,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  rake
   rspec
   zabbix-cloudwatch!

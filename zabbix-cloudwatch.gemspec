@@ -19,6 +19,7 @@ EOF
 
   s.add_runtime_dependency "aws-sdk", "~> 1.23.0"
   s.add_runtime_dependency "getopt", "~> 1.4.1"
+  s.add_development_dependency "rake"
   s.add_development_dependency "rspec"
 
   s.files         = `git ls-files`.split("\n")

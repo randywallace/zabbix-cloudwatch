@@ -21,6 +21,8 @@ EOF
   s.add_runtime_dependency "getopt", "~> 1.4.1"
   s.add_development_dependency "rake"
   s.add_development_dependency "rspec"
+  s.add_development_dependency "mime-types", "~> 1.0"
+  s.add_development_dependency "coveralls"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")

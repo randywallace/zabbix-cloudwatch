@@ -13,11 +13,6 @@ end
 @@aws_secret_key=''
 @@aws_region=''
 
-
-class RubyVersionException < StandardError; end
-
-raise RubyVersionException, "Ruby version must be 1.8.7" unless RUBY_VERSION == "1.8.7"
-
 opts = Getopt::Long.getopts(
    ["--help"],
    ["--namespace",  Getopt::REQUIRED],

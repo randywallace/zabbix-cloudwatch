@@ -25,7 +25,7 @@ Usage: zabbix-cloudwatch
 
 ## Getting it running
 
-* It is only guaranteed to work on ruby 1.8.7 at this time and will throw an Exception on other rubies. 
+* Currently tested against ruby 1.8.7, 1.9.3, and 2.0.0
 * for some of the gem dependencies, you will need the ruby development packages, gcc, libxml2, and libxslt
 
 Modify these steps to taste (examples given running on the Amazon AMI 2013.03):

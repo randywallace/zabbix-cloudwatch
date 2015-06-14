@@ -27,7 +27,7 @@ module ZabbixCloudwatch
     def get_aws_options
       raise AwsAccessKeyMissingException unless options.key?"aws-access-key"
       raise AwsSecretKeyMissingException unless options.key?"aws-secret-key"
-      if options.key?"aws-region" && options['aws-region'] != ''
+      if options.key?("aws-region") && options['aws-region'] != ''
         region = options["aws-region"]
       else
         region = 'us-east-1'

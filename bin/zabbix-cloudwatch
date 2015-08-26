@@ -9,9 +9,9 @@ rescue
   require 'getopt/long'
 end
 
-@@aws_access_key=''
-@@aws_secret_key=''
-@@aws_region=''
+aws_access_key=''
+aws_secret_key=''
+aws_region=''
 
 opts = Getopt::Long.getopts(
    ["--help"],
@@ -58,13 +58,13 @@ if opts.key?"version"
 end
 
 unless opts.key?"aws-access-key"
-  opts["aws-access-key"] = (@@aws_access_key == '' && ENV["AWS_ACCESS_KEY_ID"])     || @@aws_access_key
+  opts["aws-access-key"] = (aws_access_key == '' && ENV["AWS_ACCESS_KEY_ID"])     || aws_access_key
 end
 unless opts.key?"aws-secret-key"
-  opts["aws-secret-key"] = (@@aws_secret_key == '' && ENV["AWS_SECRET_ACCESS_KEY"]) || @@aws_secret_key
+  opts["aws-secret-key"] = (aws_secret_key == '' && ENV["AWS_SECRET_ACCESS_KEY"]) || aws_secret_key
 end
 unless opts.key?"aws-region"
-  opts["aws-region"] =     (@@aws_region     == '' && ENV["AWS_REGION"])            || @@aws_region
+  opts["aws-region"] =     (aws_region     == '' && ENV["AWS_REGION"])            || aws_region
 end
 
 inst = ZabbixCloudwatch::GetCloudwatchMetric.new(opts)

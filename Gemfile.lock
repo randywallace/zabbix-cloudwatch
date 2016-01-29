@@ -3,7 +3,7 @@ PATH
   specs:
     zabbix-cloudwatch (0.1.0)
       aws-sdk (~> 1.23.0)
-      getopt (~> 1.4.1)
+      getopt (~> 1.4.3)
 
 GEM
   remote: https://rubygems.org/

@@ -21,7 +21,7 @@ module ZabbixCloudwatch
       raise MetricnameArgumentMissingException unless options.key?"metricname"
       raise DimensionArgumentMissingException unless options.key?"dimension-name"
       raise DimensionArgumentMissingException unless options.key?"dimension-value"
-      self.aws = Aws::CloudWatch.new(get_aws_options).client
+      self.aws = Aws::CloudWatch::Client.new(get_aws_options)
     end
 
     def get_aws_options

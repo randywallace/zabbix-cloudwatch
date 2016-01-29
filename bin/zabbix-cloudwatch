@@ -18,7 +18,7 @@ opts = Getopt::Long.getopts(
    ["--namespace",  Getopt::REQUIRED],
    ["--metricname", Getopt::REQUIRED],
    ["--dimension-name",  Getopt::REQUIRED],
-   ["--dimension-value","-v",  Getopt::REQUIRED],
+   ["--dimension-value",  Getopt::REQUIRED],
    ["--monitoring-type", "-t", Getopt::REQUIRED],
    ["--statistic",Getopt::REQUIRED],
    ["--aws-access-key", Getopt::REQUIRED],
@@ -36,7 +36,7 @@ Usage: #{$0}
   -n, --namespace         Namespace (AWS/Autoscaling, AWS/EC2, etc...)
   -m, --metricname        Metric Name (GroupInServiceInstances,EstimatedCharges, etc...)
   -d, --dimension-name    Dimension Name (AutoScalingGroupName, etc...)
-  -v, --dimension-value   Dimension Value
+  --dimension-value       Dimension Value
   -t, --monitoring-type   detailed|basic                            Default: basic
   -s, --statistic         Minimum|Maximum|Average|Sum|SampleCount   Default: Average
   --aws-access-key        AWS Access Key

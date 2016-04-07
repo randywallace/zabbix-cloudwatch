@@ -8,6 +8,12 @@
 
 An external script for getting cloudwatch metrics into Zabbix
 
+## Now seeking maintainers ##
+
+I haven't used Zabbix for our infrastructure for a couple years now; as such, I can no longer properly maintain/update this project.  If someone is interested in taking over, I would be happy to hand over the keys.
+
+## Usage
+
 ```
 Usage: zabbix-cloudwatch
 

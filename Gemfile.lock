@@ -1,19 +1,19 @@
 PATH
   remote: .
   specs:
-    zabbix-cloudwatch (0.2.0)
+    zabbix-cloudwatch (0.2.1)
       aws-sdk (~> 2)
       getopt (~> 1.4.3)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    aws-sdk (2.2.14)
-      aws-sdk-resources (= 2.2.14)
-    aws-sdk-core (2.2.14)
+    aws-sdk (2.3.0)
+      aws-sdk-resources (= 2.3.0)
+    aws-sdk-core (2.3.0)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.2.14)
-      aws-sdk-core (= 2.2.14)
+    aws-sdk-resources (2.3.0)
+      aws-sdk-core (= 2.3.0)
     coveralls (0.8.10)
       json (~> 1.8)
       rest-client (>= 1.6.8, < 2)
@@ -28,8 +28,10 @@ GEM
     getopt (1.4.3)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
-    jmespath (1.1.3)
+    jmespath (1.2.4)
+      json_pure (>= 1.8.1)
     json (1.8.3)
+    json_pure (1.8.3)
     mime-types (1.25.1)
     netrc (0.11.0)
     rake (10.5.0)
@@ -74,4 +76,4 @@ DEPENDENCIES
   zabbix-cloudwatch!
 
 BUNDLED WITH
-   1.10.2
+   1.11.2

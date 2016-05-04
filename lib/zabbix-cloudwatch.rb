@@ -25,14 +25,25 @@ module ZabbixCloudwatch
     end
 
     def get_aws_options
-      raise AwsAccessKeyMissingException unless options.key?"aws-access-key"
-      raise AwsSecretKeyMissingException unless options.key?"aws-secret-key"
+      raise AwsAccessKeyMissingException if ! options.key?"aws-access-key" and options.key?"aws-secret-key"
+      raise AwsSecretKeyMissingException if ! options.key?"aws-secret-key" and options.key?"aws-access-key"
       if options.key?("aws-region") and options['aws-region'] != ''
         region = options["aws-region"]
       else
         region = 'us-east-1'
       end
-      {:access_key_id => options["aws-access-key"], :secret_access_key => options["aws-secret-key"], :region => region}
+      if options.key?"aws-access-key" and options.key?"aws-secret-key" 
+          {:access_key_id => options["aws-access-key"], :secret_access_key => options["aws-secret-key"], :region => region}
+      elsif options.key?"role-arn"
+        credentials = Aws::AssumeRoleCredentials.new(
+          client: Aws::STS::Client.new(region: region),
+          role_arn: options["role-arn"],
+          role_session_name: "zabbix-cloudwatch-metric"
+        )
+        {:region => region, :credentials => credentials}
+      else
+        {:region => region}
+      end
     end
   
     def set_statistic
@@ -110,6 +121,7 @@ module ZabbixCloudwatch
         raise BadAWSAccessKeysException, <<-EOF
   
   You cannot access AWS due to one of the following reasons:
+    - The IAM role doesn't have permissions to describe_alarms
     - The AWS keys provided do not have access to Cloudwatch
     - your server is not synced with NTP
     - The Region setting is missing or incorrect

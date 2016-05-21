@@ -24,6 +24,7 @@ opts = Getopt::Long.getopts(
    ["--aws-access-key", Getopt::REQUIRED],
    ["--aws-secret-key", Getopt::REQUIRED],
    ["--aws-region", Getopt::REQUIRED],
+   ["--role-arn", Getopt::REQUIRED],
    ["--version"]
 )
 
@@ -42,6 +43,7 @@ Usage: #{$0}
   --aws-access-key        AWS Access Key
   --aws-secret-key        AWS Secret Key
   --aws-region            AWS Region                                Default: us-east-1
+  --role-arn              Pass in a IAM Role ARN to assume that role
 
 EOF
   exit 1
@@ -57,11 +59,12 @@ if opts.key?"version"
   exit 0
 end
 
+
 unless opts.key?"aws-access-key"
-  opts["aws-access-key"] = (aws_access_key == '' && ENV["AWS_ACCESS_KEY_ID"])     || aws_access_key
+  opts["aws-access-key"] = ENV["AWS_ACCESS_KEY_ID"] if ENV["AWS_ACCESS_KEY_ID"]
 end
 unless opts.key?"aws-secret-key"
-  opts["aws-secret-key"] = (aws_secret_key == '' && ENV["AWS_SECRET_ACCESS_KEY"]) || aws_secret_key
+  opts["aws-secret-key"] = ENV["AWS_SECRET_ACCESS_KEY"] if ENV["AWS_SECRET_ACCESS_KEY"]
 end
 unless opts.key?"aws-region"
   opts["aws-region"] =     (aws_region     == '' && ENV["AWS_REGION"])            || aws_region

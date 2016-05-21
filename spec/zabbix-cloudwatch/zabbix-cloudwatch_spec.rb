@@ -35,7 +35,7 @@ module ZabbixCloudwatch
         lambda {ZabbixCloudwatch::GetCloudwatchMetric.new(options)}.should raise_error GetCloudwatchMetric::DimensionArgumentMissingException
       end
       it "Raises Exception when aws keys are not in options" do
-        options = {"namespace" => '', "metricname" => '', "dimension-value" => '', "dimension-name" => ''}
+        options = {"namespace" => '', "metricname" => '', "dimension-value" => '', "dimension-name" => '', "aws-secret-key" => ''}
         lambda {ZabbixCloudwatch::GetCloudwatchMetric.new(options)}.should raise_error GetCloudwatchMetric::AwsAccessKeyMissingException
         options = {"namespace" => '', "metricname" => '', "dimension-value" => '', "dimension-name" => '', "aws-access-key" => ''}
         lambda {ZabbixCloudwatch::GetCloudwatchMetric.new(options)}.should raise_error GetCloudwatchMetric::AwsSecretKeyMissingException

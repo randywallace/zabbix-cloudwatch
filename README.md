@@ -27,6 +27,7 @@ Usage: zabbix-cloudwatch
   --aws-access-key        AWS Access Key
   --aws-secret-key        AWS Secret Key
   --aws-region            AWS Region                                Default: us-east-1
+  --role-arn              ARN of IAM role to assume
 ```
 
 ## Getting it running
@@ -63,19 +64,23 @@ The following actions need to be allowed in IAM for this script to work with the
 
 ## AWS Credentials
 
-There are (3) ways to get your AWS Credentials into `zabbix-cloudwatch`.
+There are (4) ways to get your AWS Credentials into `zabbix-cloudwatch`.
 
-**Note that *none* of these options are "safe", so make sure you are using a set of IAM Keys with extremely restricted 
-permissions.**
+**Note that only the first of these options is "safe", so make sure you are using a set of IAM Keys with extremely restricted permissions.**
 
-### 1. Environment Variables (which is difficult with Zabbix):
+
+### 1. Use an IAM Role for your Zabbix server
+When your Zabbix server is started, assign a role to it and allow this role to perofm the required Cloud Watch interactions. The credentials are provided dynamically to the server by AWS.
+
+
+### 2. Environment Variables (which is difficult with Zabbix):
 ```bash
 export AWS_ACCESS_KEY_ID="YOUR ACCESS KEY" 
 export AWS_SECRET_ACCESS_KEY="YOUR SECRET ACCESS KEY"
 export AWS_REGION="YOUR AWS REGION"
 ```
 
-### 2. Within the binary in the gem.  
+### 3. Within the binary in the gem.  
 
 If you intend to do it this way, I suggest you make a copy of the binary
 and place it in your zabbix externalscript path (instead of the suggested symlink in the installation example).
@@ -96,7 +101,7 @@ chown zabbix:zabbix /var/lib/zabbixsrv/externalscripts/zabbix-cloudwatch
 
 The class variables for this are at the very top of the file for your convenience.
 
-### 3. Passing in your AWS Keys when you run zabbix-cloudwatch using the command line flags.
+### 4. Passing in your AWS Keys when you run zabbix-cloudwatch using the command line flags.
 
 ```bash
 zabbix-cloudwatch -n AWS/AutoScaling \
@@ -111,7 +116,7 @@ zabbix-cloudwatch -n AWS/AutoScaling \
 
 The order of preference that this gem uses for the region and keys (individually) are:
 
+* IAM Role
 * Commandline flag
 * Within the binary
 * Environment Variable
-

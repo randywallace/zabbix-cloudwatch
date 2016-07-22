@@ -21,7 +21,7 @@ Usage: zabbix-cloudwatch
   -n, --namespace         Namespace (AWS/Autoscaling, AWS/EC2, etc...)
   -m, --metricname        Metric Name (GroupInServiceInstances,EstimatedCharges, etc...)
   -d, --dimension-name    Dimension Name (AutoScalingGroupName, etc...)
-  --dimension-value   Dimension Value
+  --dimension-value       Dimension Value
   -t, --monitoring-type   detailed|basic                            Default: basic
   -s, --statistic         Minimum|Maximum|Average|Sum|SampleCount   Default: Average
   --aws-access-key        AWS Access Key
